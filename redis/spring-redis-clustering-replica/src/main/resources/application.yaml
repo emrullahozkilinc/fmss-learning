@@ -1,0 +1,11 @@
+spring:
+  data:
+    redis:
+      cluster:
+        nodes:
+          - "localhost:7100"
+          - "localhost:7101"
+          - "localhost:7102"
+          - "localhost:7103"
+          - "localhost:7104"
+          - "localhost:7105"

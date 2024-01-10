@@ -1,0 +1,12 @@
+services:
+  redis-transaction:
+    container_name: redis-transaction
+    image: redis:7.0.12
+    ports:
+      - "8605:6379"
+    volumes:
+      - redis:/data
+
+volumes:
+  redis:
+    driver: local

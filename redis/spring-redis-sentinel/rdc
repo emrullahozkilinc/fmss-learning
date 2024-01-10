@@ -1,0 +1,14 @@
+#quorum değeri
+sentinel monitor mymaster 172.25.0.2 6379 2
+
+#master sunucusunun tepki vermemesi durumunda sentinel'in bekleme süresi
+#bir problem meydana gelmesi durumunda sentinel'ın bekleme süresi
+#master sunucuda problem olduğunda sorumluluğun slave sunuculardan birine aktarılması kararının belirlenmesi için ne kadar süre bekleneceğinin milisaniye cinsinden değeri (5 saniye)
+sentinel down-after-milliseconds mymaster 5000
+
+#master sunucusunun yeniden yapılandırılması için sentinel'in beklemesi gereken süresi
+#sentinel failover sürecini gerçekleştirirken timeout süresi
+sentinel failover-timeout mymaster 10000
+
+#sentinel tarafından eşzamanlı olarak kullanılacak (senkronize edilecek) slave sunucu sayısı (3)
+sentinel parallel-syncs mymaster 3

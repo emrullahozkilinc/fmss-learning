@@ -1,0 +1,33 @@
+redis-cli --cluster create redis_r1:6379 redis_r2:6379 redis_r3:6379 redis_r4:6379 redis_r5:6379 redis_r6:6379 --cluster-replicas 1
+
+docker build -t spring-cluster-replica .
+
+curl --location 'localhost:8099/api/v1/users/cache' \
+--header 'Content-Type: application/json' \
+--data '{
+ "name":"Mert",
+ "city":"Eskisehir"
+}'
+
+curl --location 'localhost:8099/api/v1/users/cache' \
+--header 'Content-Type: application/json' \
+--data '{
+ "name":"Ali",
+ "city":"Trabzon"
+}'
+
+curl --location 'localhost:8099/api/v1/users/cache' \
+--header 'Content-Type: application/json' \
+--data '{
+ "name":"Mustafa",
+ "city":"Sivas"
+}'
+
+curl --location 'localhost:8099/api/v1/users/cache' \
+--header 'Content-Type: application/json' \
+--data '{
+ "name":"Veli",
+ "city":"Ankara"
+}'
+
+docker exec -it <container_name> redis-cli keys "*"
